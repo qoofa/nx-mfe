@@ -1,0 +1,56 @@
+{
+  "name": "custom-mfe",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/custom-mfe/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/custom-mfe",
+        "index": "apps/custom-mfe/src/index.html",
+        "main": "apps/custom-mfe/src/main.tsx",
+        "tsConfig": "apps/custom-mfe/tsconfig.app.json",
+        "rspackConfig": "apps/custom-mfe/rspack.config.js",
+        "assets": [
+          "apps/custom-mfe/src/favicon.ico",
+          "apps/custom-mfe/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "custom-mfe:build:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "custom-mfe:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "custom-mfe:build",
+        "spa": true
+      }
+    }
+  }
+}
