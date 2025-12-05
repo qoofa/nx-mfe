@@ -1,7 +1,7 @@
 {
   "name": "custom-mfe",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/custom-mfe/src",
+  "sourceRoot": "apps/host/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,15 +11,12 @@
       "defaultConfiguration": "production",
       "options": {
         "target": "web",
-        "outputPath": "dist/apps/custom-mfe",
-        "index": "apps/custom-mfe/src/index.html",
-        "main": "apps/custom-mfe/src/main.tsx",
-        "tsConfig": "apps/custom-mfe/tsconfig.app.json",
-        "rspackConfig": "apps/custom-mfe/rspack.config.js",
-        "assets": [
-          "apps/custom-mfe/src/favicon.ico",
-          "apps/custom-mfe/src/assets"
-        ]
+        "outputPath": "dist/apps/host",
+        "index": "apps/host/src/index.html",
+        "main": "apps/host/src/main.tsx",
+        "tsConfig": "apps/host/tsconfig.app.json",
+        "rspackConfig": "apps/host/rspack.config.js",
+        "assets": ["apps/host/src/favicon.ico", "apps/host/src/assets"]
       },
       "configurations": {
         "development": {
